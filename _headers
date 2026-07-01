@@ -1,0 +1,18 @@
+# Security + caching headers. Works on Cloudflare Pages AND Netlify.
+# (Cloudflare Pages and Netlify both read this _headers file at the site root.)
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Images rarely change — cache hard.
+/assets/img/*
+  Cache-Control: public, max-age=604800
+
+# CSS/JS change as you iterate — short cache so visitors get updates fast.
+/assets/css/*
+  Cache-Control: public, max-age=3600
+/assets/js/*
+  Cache-Control: public, max-age=3600

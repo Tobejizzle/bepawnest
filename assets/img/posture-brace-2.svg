@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(320)">
+      <stop offset="0" stop-color="#eaf3f0"/><stop offset="1" stop-color="#cfe6dd"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#g)"/>
+  <circle cx="300" cy="285" r="150" fill="#ffffff" opacity="0.55"/>
+  <g transform="translate(150,135) scale(3)" fill="none" stroke="#2f6f5e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="26" r="11"/><path d="M30 78c0-13 9-22 20-22s20 9 20 22"/><path d="M34 52h32"/>
+  </g>
+  <text x="300" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#2f6f5e" opacity="0.85">Hearthly</text>
+</svg>
