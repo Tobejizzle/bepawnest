@@ -19,7 +19,7 @@ const STORE = {
   // After you deploy stripe-worker/worker.js, paste its URL here, e.g.
   // "https://bepawnest-checkout.YOURNAME.workers.dev". Until then the
   // checkout button shows a "not connected" note. See stripe-worker/README.md.
-  checkoutApiUrl: "",
+  checkoutApiUrl: "https://bepawnest-checkout.polysyllabicism.workers.dev",
 
   // ---- Live site URL (used for canonical tags, Open Graph, structured data) ----
   siteUrl: "https://bepawnest.com",
