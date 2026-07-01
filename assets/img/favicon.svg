@@ -1,5 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2f6f5e"/>
-  <circle cx="46" cy="19" r="5" fill="#e0794b"/>
-  <text x="13" y="46" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#fbf8f3">H</text>
+  <rect width="64" height="64" rx="14" fill="#12796f"/>
+  <g fill="#fbf7f2">
+    <circle cx="32" cy="40" r="10"/>
+    <circle cx="18" cy="28" r="4.6"/>
+    <circle cx="27" cy="21" r="4.6"/>
+    <circle cx="37" cy="21" r="4.6"/>
+    <circle cx="46" cy="28" r="4.6"/>
+  </g>
+  <circle cx="46" cy="46" r="4.5" fill="#f4794e"/>
 </svg>

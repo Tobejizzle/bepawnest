@@ -1,20 +1,20 @@
 /* ===========================================================================
-   Hearthly storefront — design system
+   BePawnest storefront — design system
    Edit the variables below to rebrand the whole site at once.
    ======================================================================== */
 :root {
-  --brand:        #2f6f5e;   /* primary brand green */
-  --brand-dark:   #234f44;
-  --brand-tint:   #eaf3f0;
-  --accent:       #e0794b;   /* CTA / sale accent */
-  --accent-dark:  #c25f34;
-  --ink:          #1d2421;   /* near-black text */
-  --muted:        #6b7670;   /* secondary text */
-  --line:         #e4e7e5;   /* hairline borders */
+  --brand:        #12796f;   /* primary brand teal */
+  --brand-dark:   #0e5a52;
+  --brand-tint:   #e2f2ef;
+  --accent:       #f4794e;   /* CTA / sale coral */
+  --accent-dark:  #d95f34;
+  --ink:          #21292b;   /* near-black text */
+  --muted:        #6a7476;   /* secondary text */
+  --line:         #e4e8e7;   /* hairline borders */
   --bg:           #ffffff;
-  --bg-soft:      #f7f9f8;
-  --bg-cream:     #fbf8f3;
-  --ok:           #2f8f5b;
+  --bg-soft:      #f6f9f8;
+  --bg-cream:     #fbf7f2;
+  --ok:           #1f8f7a;
   --radius:       14px;
   --radius-sm:    9px;
   --shadow-sm:    0 1px 2px rgba(20,40,33,.06), 0 2px 6px rgba(20,40,33,.05);

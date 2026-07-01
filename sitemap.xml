@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace YOUR-DOMAIN.com with your real domain, then resubmit in Google Search Console. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://YOUR-DOMAIN.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=posture-brace</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=sunset-lamp</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=spin-scrubber</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=laptop-stand</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=mini-blender</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/product.html?id=knee-pillow</loc><priority>0.9</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/about.html</loc><priority>0.5</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/contact.html</loc><priority>0.5</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/shipping.html</loc><priority>0.3</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/returns.html</loc><priority>0.3</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/privacy.html</loc><priority>0.3</priority></url>
-  <url><loc>https://YOUR-DOMAIN.com/terms.html</loc><priority>0.3</priority></url>
+  <url><loc>https://bepawnest.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=slow-feeder</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=deshedding-brush</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=calming-bed</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=treat-puzzle</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=lick-mat</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/product.html?id=no-pull-harness</loc><priority>0.9</priority></url>
+  <url><loc>https://bepawnest.com/about.html</loc><priority>0.5</priority></url>
+  <url><loc>https://bepawnest.com/contact.html</loc><priority>0.5</priority></url>
+  <url><loc>https://bepawnest.com/shipping.html</loc><priority>0.3</priority></url>
+  <url><loc>https://bepawnest.com/returns.html</loc><priority>0.3</priority></url>
+  <url><loc>https://bepawnest.com/privacy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://bepawnest.com/terms.html</loc><priority>0.3</priority></url>
 </urlset>

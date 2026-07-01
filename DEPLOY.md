@@ -1,4 +1,4 @@
-# Deploying Hearthly — turnkey guide
+# Deploying BePawnest — turnkey guide
 
 This is a static site (HTML/CSS/JS, **no build step**). Everything below is set up
 and ready; you just need to create the accounts and click through. Budget ~10–15 min.

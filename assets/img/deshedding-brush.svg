@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(145)">
+      <stop offset="0" stop-color="#fdeee7"/><stop offset="1" stop-color="#f8d6c6"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#g)"/>
+  <circle cx="300" cy="285" r="150" fill="#ffffff" opacity="0.7"/>
+  <g transform="translate(150,135) scale(3)" fill="none" stroke="#f4794e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="32" y="30" width="36" height="18" rx="4"/><path d="M37 48v11M45 48v13M55 48v13M63 48v11"/><rect x="44" y="16" width="12" height="14" rx="3"/>
+  </g>
+  <text x="300" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f4794e" opacity="0.85">BePawnest</text>
+</svg>

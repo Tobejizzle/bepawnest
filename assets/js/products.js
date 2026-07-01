@@ -9,18 +9,17 @@
    ======================================================================== */
 
 const STORE = {
-  name: "Hearthly",
-  tagline: "Small upgrades for everyday living.",
+  name: "BePawnest",
+  tagline: "Honest essentials for the pets you love.",
   currency: "USD",
   currencySymbol: "$",
-  supportEmail: "support@hearthly.example",   // <-- change to your real inbox
+  supportEmail: "support@bepawnest.com",   // <-- change if your inbox differs
   // PayPal: replace "sb" with your live Client ID from developer.paypal.com.
   // "sb" = sandbox (test) mode and will NOT take real money.
   paypalClientId: "sb",
 
-  // ---- Live site URL (set this once your domain is connected) -----------
-  // Powers canonical tags, Open Graph, and structured data. e.g. "https://yourstore.com"
-  siteUrl: "",
+  // ---- Live site URL (used for canonical tags, Open Graph, structured data) ----
+  siteUrl: "https://bepawnest.com",
 
   // ---- Google Ads / Analytics (paste your IDs to switch tracking on) ----
   // Nothing loads and no cookie banner shows until at least one is filled in.
@@ -31,159 +30,159 @@ const STORE = {
 
 const PRODUCTS = [
   {
-    id: "posture-brace",
-    name: "PostureLift Support Brace",
-    tagline: "Gently trains your shoulders back so you sit and stand taller — all day comfort.",
-    price: 34.95,
-    compareAt: 59.95,
+    id: "slow-feeder",
+    name: "No-Gulp Slow Feeder Bowl",
+    tagline: "Turns fast, gulpy meals into a calm, healthy pace — less bloat, less mess.",
+    price: 19.95,
+    compareAt: 32.00,
     rating: 4.8,
-    reviews: 1294,
+    reviews: 1643,
     badge: "Bestseller",
-    image: "assets/img/posture-brace.svg",
-    gallery: ["assets/img/posture-brace.svg", "assets/img/posture-brace-2.svg"],
+    image: "assets/img/slow-feeder.svg",
+    gallery: ["assets/img/slow-feeder.svg", "assets/img/slow-feeder-2.svg"],
     description:
-      "Slouching all day takes a toll on your neck and back. The PostureLift brace uses a breathable, adjustable design to keep your shoulders aligned without digging in — so good posture becomes a habit, not a chore.",
+      "If your dog inhales dinner in ten seconds flat, this is the fix. The raised maze pattern makes them work for each bite, slowing eating by up to 10× — which helps prevent bloating, vomiting, and that desperate 'I'm starving' act. Honestly, it's the cheapest health upgrade in the shop.",
     features: [
-      "Adjustable figure-8 straps fit chest sizes 28\"–48\"",
-      "Breathable mesh stays cool under clothing",
-      "Lightweight — wear it 20–30 min a day to build the habit",
-      "Discreet enough to wear under a shirt"
+      "Maze design slows eating up to 10× for easier digestion",
+      "Food-grade, BPA-free, and dishwasher-safe",
+      "Non-slip base stays put through the most enthusiastic eater",
+      "Works with dry or wet food — great for dogs & cats"
     ],
     specs: {
-      Material: "Breathable mesh + soft-touch padding",
-      Sizing: "One size, fully adjustable (28–48\" chest)",
-      Weight: "180 g",
-      "In the box": "1 × brace, fit guide"
+      Material: "BPA-free, food-grade plastic",
+      Size: "Ø 22 cm, holds up to 2 cups",
+      Care: "Top-rack dishwasher safe",
+      "In the box": "1 × slow feeder bowl"
     }
   },
   {
-    id: "sunset-lamp",
-    name: "Aura Sunset Projection Lamp",
-    tagline: "Wash any room in a warm golden-hour glow with a twist of the head.",
+    id: "deshedding-brush",
+    name: "FurEase Self-Cleaning Deshedding Brush",
+    tagline: "Lifts out loose undercoat in minutes, then retracts the bristles with one click.",
+    price: 24.95,
+    compareAt: 39.95,
+    rating: 4.9,
+    reviews: 2288,
+    badge: "Trending",
+    image: "assets/img/deshedding-brush.svg",
+    gallery: ["assets/img/deshedding-brush.svg", "assets/img/deshedding-brush-2.svg"],
+    description:
+      "The brush that ends the fur tumbleweeds. Fine angled bristles reach through the topcoat to lift loose undercoat before it lands on your sofa — then one press of the button retracts the bristles so all that hair wipes straight into the bin. No more picking fur off by hand.",
+    features: [
+      "Reaches loose undercoat without scratching the skin",
+      "One-click retractable bristles for mess-free cleanup",
+      "Anti-slip grip stays comfy through long grooming sessions",
+      "Works on dogs & cats, short or long hair"
+    ],
+    specs: {
+      Material: "ABS handle, stainless-steel bristles",
+      "Best for": "Medium to heavy shedders",
+      Care: "Wipe clean",
+      "In the box": "1 × deshedding brush"
+    }
+  },
+  {
+    id: "calming-bed",
+    name: "CloudNest Calming Donut Bed",
+    tagline: "A plush raised rim they can burrow into and nuzzle — anxiety-soothing comfort.",
+    price: 44.95,
+    compareAt: 79.95,
+    rating: 4.8,
+    reviews: 1412,
+    badge: "Save 44%",
+    image: "assets/img/calming-bed.svg",
+    gallery: ["assets/img/calming-bed.svg", "assets/img/calming-bed-2.svg"],
+    description:
+      "Dogs and cats are wired to nest, and the CloudNest leans right into it. The puffy raised rim gives their head and neck something to rest against, while the deep faux-fur filling wraps them in self-warming comfort — the kind of hug that settles anxious, restless sleepers. Honestly, they'll pick this over your bed.",
+    features: [
+      "Raised rim supports head & neck to ease anxiety",
+      "Ultra-soft faux fur with deep, self-warming filling",
+      "Machine-washable — zips off and tumbles clean",
+      "Non-slip base; sizes from cats to large dogs"
+    ],
+    specs: {
+      Sizes: "S / M / L (60–90 cm)",
+      Fill: "Recycled poly-fibre",
+      Care: "Machine washable, cold",
+      "In the box": "1 × calming bed"
+    }
+  },
+  {
+    id: "treat-puzzle",
+    name: "BrainyPaws Treat Puzzle Toy",
+    tagline: "Turns treat time into a slow, happy brain workout — beats boredom and mischief.",
+    price: 22.95,
+    compareAt: 36.95,
+    rating: 4.7,
+    reviews: 987,
+    badge: "New",
+    image: "assets/img/treat-puzzle.svg",
+    gallery: ["assets/img/treat-puzzle.svg", "assets/img/treat-puzzle-2.svg"],
+    description:
+      "A bored pet is a mischievous pet. BrainyPaws hides kibble and treats behind flips, slides, and cups your dog has to nudge open — rewarding patience instead of your couch cushions. The mental workout tires them out as much as a walk, and honestly, it's a joy to watch them figure it out.",
+    features: [
+      "Interactive puzzle rewards problem-solving",
+      "Slows fast eaters and curbs boredom behaviours",
+      "Non-slip base with no removable small parts",
+      "Wipe-clean, food-safe design"
+    ],
+    specs: {
+      Level: "Beginner to intermediate",
+      Material: "BPA-free, food-safe plastic",
+      Care: "Hand wash, wipe clean",
+      "In the box": "1 × puzzle toy"
+    }
+  },
+  {
+    id: "lick-mat",
+    name: "CalmLick Slow-Feed Lick Mat (2-pack)",
+    tagline: "Spread on a treat and let the licking soothe them through baths, trims, and storms.",
+    price: 16.95,
+    compareAt: 27.95,
+    rating: 4.8,
+    reviews: 1755,
+    badge: "Bestseller",
+    image: "assets/img/lick-mat.svg",
+    gallery: ["assets/img/lick-mat.svg", "assets/img/lick-mat-2.svg"],
+    description:
+      "Licking releases calming endorphins — so a smear of peanut butter or wet food on the CalmLick keeps pets happily distracted through baths, grooming, vet visits, and thunder. The strong suction base sticks to any smooth surface so it won't skate around. Two mats, because one is never enough.",
+    features: [
+      "Textured surface soothes anxiety through the lick reflex",
+      "Strong suction base grips the tub, wall, or floor",
+      "Freezer-friendly for longer-lasting summer treats",
+      "Food-grade silicone, dishwasher-safe — 2-pack"
+    ],
+    specs: {
+      Material: "Food-grade silicone",
+      Size: "20 × 20 cm each",
+      Care: "Dishwasher safe",
+      "In the box": "2 × lick mats"
+    }
+  },
+  {
+    id: "no-pull-harness",
+    name: "EasyWalk No-Pull Dog Harness",
+    tagline: "Gentle front-clip control that stops pulling without choking — walks you'll both enjoy.",
     price: 29.95,
     compareAt: 49.95,
     rating: 4.9,
-    reviews: 2071,
-    badge: "Trending",
-    image: "assets/img/sunset-lamp.svg",
-    gallery: ["assets/img/sunset-lamp.svg", "assets/img/sunset-lamp-2.svg"],
-    description:
-      "The lamp that took over everyone's feed. Project a rich, photogenic sunset onto your wall or ceiling in seconds. The rotating head lets you dial the angle for the perfect ambient glow — ideal for bedrooms, photos, and unwinding.",
-    features: [
-      "180° rotating head aims the glow anywhere",
-      "16 colour modes from sunset orange to aurora red",
-      "USB-powered — plug into any adapter or power bank",
-      "Photographer-favourite warm, even light"
-    ],
-    specs: {
-      Power: "USB-C, 5 V (adapter not included)",
-      Modes: "16 colours, adjustable brightness",
-      Cable: "1.5 m USB-C",
-      "In the box": "1 × lamp, USB-C cable"
-    }
-  },
-  {
-    id: "spin-scrubber",
-    name: "TurboClean Cordless Spin Scrubber",
-    tagline: "Power through grime in the bath, tile, and kitchen — no scrubbing by hand.",
-    price: 49.95,
-    compareAt: 89.95,
-    rating: 4.7,
-    reviews: 863,
-    badge: "Save 44%",
-    image: "assets/img/spin-scrubber.svg",
-    gallery: ["assets/img/spin-scrubber.svg", "assets/img/spin-scrubber-2.svg"],
-    description:
-      "Let the motor do the work. TurboClean spins at up to 400 RPM to lift soap scum, grout grime, and stuck-on residue while you simply guide it. The extendable handle reaches tubs, tiles, and corners without you bending or kneeling.",
-    features: [
-      "Up to 400 RPM removes grime hands-free",
-      "4 interchangeable brush heads for every surface",
-      "Extends to 110 cm — clean without bending",
-      "IPX7 waterproof, rechargeable (90 min runtime)"
-    ],
-    specs: {
-      Battery: "Rechargeable Li-ion, ~90 min per charge",
-      Speed: "Up to 400 RPM",
-      "Waterproof": "IPX7 rated",
-      "In the box": "Handle, 4 brush heads, USB charger"
-    }
-  },
-  {
-    id: "laptop-stand",
-    name: "Elevate Aluminium Laptop Stand",
-    tagline: "Bring your screen to eye level and end the neck strain — folds flat to travel.",
-    price: 39.95,
-    compareAt: 69.95,
-    rating: 4.9,
-    reviews: 1542,
+    reviews: 2034,
     badge: "Staff pick",
-    image: "assets/img/laptop-stand.svg",
-    gallery: ["assets/img/laptop-stand.svg", "assets/img/laptop-stand-2.svg"],
+    image: "assets/img/no-pull-harness.svg",
+    gallery: ["assets/img/no-pull-harness.svg", "assets/img/no-pull-harness-2.svg"],
     description:
-      "A healthier desk in one move. Elevate raises your laptop to a natural eye line, opening airflow underneath to keep it cool. Aircraft-grade aluminium feels rock-solid, yet the whole thing folds flat to slip into your bag.",
+      "Pulling on the leash hurts their throat and your shoulder. The EasyWalk's front clip gently steers your dog back toward you when they lunge — no choking, no harsh corrections, just calmer walks. Padded straps and four adjustment points give a snug, comfy fit that won't rub. The humane way to teach loose-leash walking.",
     features: [
-      "6 adjustable height angles for the perfect eye line",
-      "Open design improves airflow & cooling",
-      "Fits 10\"–17\" laptops; silicone pads grip & protect",
-      "Folds flat — only 1.5 cm thick to carry"
+      "Front D-ring redirects pulling gently — no choking",
+      "4 adjustment points for a secure, no-escape fit",
+      "Padded chest & belly straps prevent rubbing",
+      "Reflective stitching for safe low-light walks"
     ],
     specs: {
-      Material: "Aircraft-grade aluminium alloy",
-      Compatibility: "10\"–17\" laptops",
-      Folded: "1.5 cm thick, 240 g",
-      "In the box": "1 × stand, carry pouch"
-    }
-  },
-  {
-    id: "mini-blender",
-    name: "FreshGo Portable Mini Blender",
-    tagline: "Blend smoothies anywhere and drink straight from the bottle.",
-    price: 32.95,
-    compareAt: 54.95,
-    rating: 4.6,
-    reviews: 977,
-    badge: "New",
-    image: "assets/img/mini-blender.svg",
-    gallery: ["assets/img/mini-blender.svg", "assets/img/mini-blender-2.svg"],
-    description:
-      "Smoothies on your schedule. FreshGo's six stainless blades crush fruit, ice, and protein in 30 seconds, then the jar becomes your travel bottle. USB-rechargeable, so it goes from gym bag to office to trail.",
-    features: [
-      "6 stainless-steel blades crush ice & frozen fruit",
-      "USB-C rechargeable — ~15 blends per charge",
-      "BPA-free 380 ml jar doubles as a travel bottle",
-      "One-button blend with safety lock"
-    ],
-    specs: {
-      Capacity: "380 ml",
-      Battery: "4000 mAh, USB-C rechargeable",
-      Blades: "6 × 304 stainless steel",
-      "In the box": "Blender, lid, USB-C cable"
-    }
-  },
-  {
-    id: "knee-pillow",
-    name: "AlignRest Memory Foam Knee Pillow",
-    tagline: "Side-sleeper relief — keeps hips and spine aligned through the night.",
-    price: 24.95,
-    compareAt: 39.95,
-    rating: 4.8,
-    reviews: 1816,
-    badge: "Bestseller",
-    image: "assets/img/knee-pillow.svg",
-    gallery: ["assets/img/knee-pillow.svg", "assets/img/knee-pillow-2.svg"],
-    description:
-      "Wake up without the morning ache. AlignRest's contoured memory foam sits between your knees to keep your hips, pelvis, and spine in a neutral line — easing pressure for side sleepers and anyone with lower-back tension.",
-    features: [
-      "Ergonomic contour keeps hips & spine aligned",
-      "Premium memory foam holds its shape all night",
-      "Removable, machine-washable breathable cover",
-      "Adjustable strap keeps it in place as you move"
-    ],
-    specs: {
-      Material: "High-density memory foam",
-      Cover: "Removable, machine-washable",
-      Dimensions: "25 × 20 × 15 cm",
-      "In the box": "1 × pillow, washable cover, strap"
+      Sizes: "XS–XL (girth 33–96 cm)",
+      Material: "Padded nylon, metal hardware",
+      Clips: "Front + back D-rings",
+      "In the box": "1 × harness"
     }
   }
 ];

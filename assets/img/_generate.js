@@ -5,28 +5,37 @@ const fs = require("fs");
 const path = require("path");
 
 const palettes = {
-  a: ["#eaf3f0", "#cfe6dd", "#2f6f5e"],
-  b: ["#fbf1e7", "#f6d8bf", "#e0794b"],
-  c: ["#eef0f6", "#d6def0", "#5566a6"],
-  d: ["#fdeef0", "#f7d3da", "#c25a73"],
+  teal:   ["#e2f2ef", "#c5e6e0", "#12796f"],
+  coral:  ["#fdeee7", "#f8d6c6", "#f4794e"],
+  sky:    ["#e9f1f7", "#cfe1f0", "#3f7fb0"],
+  sand:   ["#fbf2e6", "#f2ddbf", "#c98a3c"],
 };
 
+// simple white line icons, 0 0 100 100 viewBox, stroked, centered
 const icons = {
-  posture: `<circle cx="50" cy="26" r="11"/><path d="M30 78c0-13 9-22 20-22s20 9 20 22"/><path d="M34 52h32"/>`,
-  lamp: `<rect x="36" y="62" width="28" height="10" rx="3"/><path d="M50 62V44"/><path d="M50 44a14 14 0 1 0-.01 0Z"/><path d="M50 30v-8M68 38l6-5M32 38l-6-5"/>`,
-  scrubber: `<circle cx="50" cy="38" r="16"/><path d="M50 38l10-10M50 38l-10 6"/><path d="M50 54v22"/><rect x="44" y="74" width="12" height="8" rx="2"/>`,
-  laptop: `<rect x="26" y="32" width="48" height="30" rx="3"/><path d="M20 70h60l-4 6H24z"/><path d="M34 44h26"/>`,
-  blender: `<path d="M38 30h24l-3 34a4 4 0 0 1-4 4h-10a4 4 0 0 1-4-4z"/><rect x="40" y="74" width="20" height="6" rx="2"/><path d="M44 40h12M45 50h10"/>`,
-  pillow: `<path d="M30 44c10-8 30-8 40 0 6 5 6 18-2 22-6 3-8-4-18-4s-12 7-18 4c-8-4-8-17-2-22z"/>`,
+  // slow feeder bowl — bowl + wavy maze
+  bowl: `<path d="M20 46h60a30 30 0 0 1-60 0z"/><path d="M30 46q6 9 12 0 6 9 12 0 6 9 12 0"/><path d="M24 40h52"/>`,
+  // deshedding brush — head + bristles + handle
+  brush: `<rect x="32" y="30" width="36" height="18" rx="4"/><path d="M37 48v11M45 48v13M55 48v13M63 48v11"/><rect x="44" y="16" width="12" height="14" rx="3"/>`,
+  // calming donut bed — outer ring + inner well
+  bed: `<ellipse cx="50" cy="56" rx="32" ry="19"/><ellipse cx="50" cy="53" rx="17" ry="9"/>`,
+  // treat puzzle — treat ball with holes
+  puzzle: `<circle cx="50" cy="50" r="25"/><circle cx="41" cy="44" r="3.4"/><circle cx="59" cy="44" r="3.4"/><circle cx="50" cy="60" r="3.4"/>`,
+  // lick mat — rounded mat + bump grid
+  mat: `<rect x="24" y="30" width="52" height="40" rx="9"/><path d="M36 42h.01M50 42h.01M64 42h.01M36 54h.01M50 54h.01M64 54h.01"/>`,
+  // harness / collar — loop + hanging tag
+  collar: `<ellipse cx="50" cy="48" rx="26" ry="20"/><path d="M50 68v6"/><circle cx="50" cy="80" r="6"/>`,
+  // paw (used in hero mix)
+  paw: `<circle cx="50" cy="58" r="13"/><circle cx="34" cy="44" r="6"/><circle cx="50" cy="38" r="6"/><circle cx="66" cy="44" r="6"/>`,
 };
 
 const map = {
-  "posture-brace": ["posture", "a"],
-  "sunset-lamp": ["lamp", "b"],
-  "spin-scrubber": ["scrubber", "c"],
-  "laptop-stand": ["laptop", "a"],
-  "mini-blender": ["blender", "d"],
-  "knee-pillow": ["pillow", "b"],
+  "slow-feeder":      ["bowl", "teal"],
+  "deshedding-brush": ["brush", "coral"],
+  "calming-bed":      ["bed", "sand"],
+  "treat-puzzle":     ["puzzle", "sky"],
+  "lick-mat":         ["mat", "teal"],
+  "no-pull-harness":  ["collar", "coral"],
 };
 
 function svg(iconKey, palKey, variant) {
@@ -44,7 +53,7 @@ function svg(iconKey, palKey, variant) {
   <g transform="translate(150,135) scale(3)" fill="none" stroke="${accent}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
     ${icon}
   </g>
-  <text x="300" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="${accent}" opacity="0.85">Hearthly</text>
+  <text x="300" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="${accent}" opacity="0.85">BePawnest</text>
 </svg>`;
 }
 
@@ -56,13 +65,13 @@ for (const [id, [iconKey, palKey]] of Object.entries(map)) {
 
 const hero = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 680" width="800" height="680">
   <defs><linearGradient id="h" gradientTransform="rotate(150)">
-    <stop offset="0" stop-color="#fbf8f3"/><stop offset="1" stop-color="#cfe6dd"/></linearGradient></defs>
+    <stop offset="0" stop-color="#fbf7f2"/><stop offset="1" stop-color="#c5e6e0"/></linearGradient></defs>
   <rect width="800" height="680" fill="url(#h)"/>
   ${[
-    [120, 110, "lamp", "b"],
-    [430, 90, "blender", "d"],
-    [110, 380, "scrubber", "c"],
-    [430, 360, "pillow", "a"],
+    [120, 110, "bowl", "teal"],
+    [430, 90, "paw", "coral"],
+    [110, 380, "collar", "sky"],
+    [430, 360, "bed", "sand"],
   ].map(([x, y, k, p]) => `
     <g transform="translate(${x},${y})">
       <rect width="250" height="220" rx="20" fill="#ffffff" opacity="0.85"/>

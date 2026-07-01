@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /cart.html
 
-# Replace YOUR-DOMAIN.com with your real domain once connected.
-Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
+Sitemap: https://bepawnest.com/sitemap.xml

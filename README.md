@@ -1,4 +1,4 @@
-# Hearthly — Google Ads dropshipping storefront
+# BePawnest — Google Ads dropshipping storefront
 
 A fast, conversion-focused static storefront built for **Google Ads dropshipping**.
 Pure HTML/CSS/vanilla JS — no build step, no framework, no platform fee. PayPal
