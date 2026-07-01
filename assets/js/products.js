@@ -14,9 +14,12 @@ const STORE = {
   currency: "USD",
   currencySymbol: "$",
   supportEmail: "support@bepawnest.com",   // <-- change if your inbox differs
-  // PayPal: replace "sb" with your live Client ID from developer.paypal.com.
-  // "sb" = sandbox (test) mode and will NOT take real money.
-  paypalClientId: "sb",
+
+  // ---- Stripe checkout backend (your Cloudflare Worker URL) -------------
+  // After you deploy stripe-worker/worker.js, paste its URL here, e.g.
+  // "https://bepawnest-checkout.YOURNAME.workers.dev". Until then the
+  // checkout button shows a "not connected" note. See stripe-worker/README.md.
+  checkoutApiUrl: "",
 
   // ---- Live site URL (used for canonical tags, Open Graph, structured data) ----
   siteUrl: "https://bepawnest.com",

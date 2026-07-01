@@ -266,8 +266,9 @@
           <div class="sum-row"><span>Subtotal</span><span>${money(total)}</span></div>
           <div class="sum-row"><span>Shipping</span><span style="color:var(--ok);font-weight:600">FREE</span></div>
           <div class="sum-row total"><span>Total</span><span>${money(total)}</span></div>
-          <div id="paypal-button-container"></div>
-          <p class="pay-note">${ico('<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>', 13)} Encrypted checkout via PayPal. No account required — pay by card too.</p>
+          <button class="btn btn-primary btn-block btn-lg" id="checkout-btn" style="margin-top:1.2rem">Proceed to secure checkout</button>
+          <div id="checkout-msg"></div>
+          <p class="pay-note">${ico('<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>', 13)} Encrypted checkout by Stripe — pay by card, Apple Pay & more.</p>
         </aside>
       </div>`;
 
@@ -277,72 +278,70 @@
       checkoutTracked = true;
       track("beginCheckout", { value: total, items: cart.map(lineItem) });
     }
-    mountPayPal(total);
+    mountCheckout(total);
   }
 
-  /* ---- PayPal ---------------------------------------------------------
-     Loads the PayPal JS SDK with the Client ID from products.js, then
-     renders Smart Buttons. "sb" = sandbox; swap for your live Client ID. */
-  function mountPayPal(total) {
-    const container = $("#paypal-button-container");
-    if (!container) return;
-
-    function render() {
-      if (!window.paypal) {
-        container.innerHTML =
-          '<p class="muted" style="font-size:.85rem">PayPal could not load. Check your Client ID in <code>assets/js/products.js</code> and your connection.</p>';
-        return;
+  /* ---- Stripe checkout ------------------------------------------------
+     POSTs the cart to the checkout Worker (STORE.checkoutApiUrl), which
+     creates a Stripe Checkout Session SERVER-SIDE and returns its URL.
+     Prices are re-verified on the server, so the browser can't alter them.
+     The customer pays on Stripe's hosted page, then returns to success.html. */
+  function mountCheckout() {
+    const btn = $("#checkout-btn");
+    const msg = $("#checkout-msg");
+    if (!btn) return;
+    const api = ((typeof STORE !== "undefined" && STORE.checkoutApiUrl) || "").replace(/\/+$/, "");
+    if (!api) {
+      btn.disabled = true;
+      if (msg) msg.innerHTML = '<p class="muted" style="font-size:.82rem;margin:.6rem 0 0">Checkout isn\'t connected yet — deploy the checkout Worker and paste its URL into <code>checkoutApiUrl</code> in <code>assets/js/products.js</code>.</p>';
+      return;
+    }
+    btn.addEventListener("click", async () => {
+      const cart = getCart();
+      if (!cart.length) return;
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Redirecting to checkout…";
+      if (msg) msg.innerHTML = "";
+      try {
+        const res = await fetch(api + "/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cart })
+        });
+        const data = await res.json();
+        if (data && data.url) { window.location = data.url; return; }
+        throw new Error((data && data.error) || "Checkout failed");
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = label;
+        if (msg) msg.innerHTML = '<p style="font-size:.82rem;margin:.6rem 0 0;color:var(--accent-dark)">Sorry — checkout couldn\'t start. Please try again in a moment.</p>';
       }
-      container.innerHTML = "";
-      window.paypal.Buttons({
-        style: { color: "gold", shape: "pill", label: "paypal", height: 48 },
-        createOrder: (data, actions) =>
-          actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: total.toFixed(2),
-                currency_code: STORE.currency
-              },
-              description: `${STORE.name} order`
-            }]
-          }),
-        onApprove: (data, actions) =>
-          actions.order.capture().then((details) => {
-            const name = details?.payer?.name?.given_name || "there";
-            const orderTotal = cartTotal();
-            const orderItems = getCart().map(lineItem);
-            track("purchase", {
-              transactionId: (details && details.id) || (data && data.orderID),
-              value: orderTotal,
-              items: orderItems
-            });
-            saveCart([]);
-            $("#cart-root").innerHTML = `
-              <div class="empty-cart">
-                ${ico('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>', 56)}
-                <h2>Thank you, ${name}! 🎉</h2>
-                <p class="muted">Your order is confirmed. A receipt is on its way to your email.<br>
-                We'll send tracking once it ships.</p>
-                <a class="btn btn-primary" href="index.html">Continue shopping</a>
-              </div>`;
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }),
-        onError: () => toast("Payment could not be completed. Please try again.")
-      }).render("#paypal-button-container");
-    }
+    });
+  }
 
-    if (window.paypal) { render(); return; }
-    // inject SDK once
-    if (!document.getElementById("paypal-sdk")) {
-      const s = document.createElement("script");
-      s.id = "paypal-sdk";
-      s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(STORE.paypalClientId)}&currency=${STORE.currency}`;
-      s.onload = render;
-      s.onerror = () => { container.innerHTML = '<p class="muted" style="font-size:.85rem">Could not reach PayPal. Add your live Client ID in <code>assets/js/products.js</code>.</p>'; };
-      document.head.appendChild(s);
-    } else {
-      document.getElementById("paypal-sdk").addEventListener("load", render);
+  /* ---- Order success page (success.html) ------------------------------
+     Stripe redirects here after payment. Fire the purchase event, then
+     clear the cart. Reloading is safe: once cleared, nothing re-fires. */
+  function renderSuccess() {
+    const el = $("#order-confirm");
+    if (!el) return;
+    const sid = new URLSearchParams(location.search).get("session_id");
+    const cart = getCart();
+    const total = cartTotal();
+    const items = cart.map(lineItem);
+    if (items.length) {
+      track("purchase", { transactionId: sid || ("order_" + Date.now()), value: total, items });
+      saveCart([]);
     }
+    el.innerHTML = `
+      <div class="empty-cart">
+        ${ico('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>', 56)}
+        <h2>Thank you! 🎉</h2>
+        <p class="muted">Your order is confirmed and a receipt is on its way to your email.<br>
+        We'll send tracking as soon as it ships.</p>
+        <a class="btn btn-primary" href="index.html">Continue shopping</a>
+      </div>`;
   }
 
   /* ---- tiny icon helpers --------------------------------------------- */
@@ -388,6 +387,7 @@
     renderGrid();
     renderPDP();
     renderCart();
+    renderSuccess();
 
     // contact form (demo — wire to Formspree/your backend in production)
     const cf = $("#contact-form");
